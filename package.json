@@ -27,7 +27,7 @@
     "prepublishOnly": "node scripts/release.js"
   },
   "dependencies": {
-    "oniguruma": "^7.0.1"
+    "oniguruma": "^7.0.2"
   },
   "devDependencies": {
     "@types/mocha": "2.2.39",
