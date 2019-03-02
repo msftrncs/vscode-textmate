@@ -536,6 +536,11 @@ function handleCaptures(grammar: Grammar, lineText: OnigString, isFirstLine: boo
 			let contentName = captureRule.getContentName(lineTextContent, captureIndices);
 			let contentNameScopesList = nameScopesList.push(grammar, contentName);
 
+			if (IN_DEBUG_MODE) {
+				console.log('');
+				console.log('-------------------------------------------');
+				console.log(`TOKENIZING CAPTURE ${i}: |${lineTextContent.substr(captureIndex.start, captureIndex.end - captureIndex.start).replace(/\n$/, '\\n')}|`);
+			}
 			let stackClone = stack.push(captureRule.retokenizeCapturedWithRuleId, captureIndex.start, null, nameScopesList, contentNameScopesList);
 			let onigSubStr = grammar.createOnigString(lineTextContent.substring(0, captureIndex.end));
 			_tokenizeString(grammar,
@@ -543,6 +548,9 @@ function handleCaptures(grammar: Grammar, lineText: OnigString, isFirstLine: boo
 				(isFirstLine && captureIndex.start === 0), captureIndex.start, stackClone, lineTokens
 			);
 			disposeOnigString(onigSubStr);
+			if (IN_DEBUG_MODE) {
+				console.log('-------------------------------------------');
+			}
 			continue;
 		}
 

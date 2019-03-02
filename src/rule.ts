@@ -706,7 +706,7 @@ export class RuleFactory {
 						if (localIncludedRule) {
 							patternId = RuleFactory.getCompiledRuleId(localIncludedRule, helper, repository);
 						} else {
-							// console.warn('CANNOT find rule for scopeName: ' + pattern.include + ', I am: ', repository['$base'].name);
+							console.warn('CANNOT find rule for scopeName: ' + pattern.include + ', I am: ', repository['$base'].name);
 						}
 					} else if (pattern.include === '$base' || pattern.include === '$self') {
 						// Special include also found in `repository`
@@ -730,13 +730,13 @@ export class RuleFactory {
 								if (externalIncludedRule) {
 									patternId = RuleFactory.getCompiledRuleId(externalIncludedRule, helper, externalGrammar.repository);
 								} else {
-									// console.warn('CANNOT find rule for scopeName: ' + pattern.include + ', I am: ', repository['$base'].name);
+									console.warn('CANNOT find rule for scopeName: ' + pattern.include + ', I am: ', repository['$base'].name);
 								}
 							} else {
 								patternId = RuleFactory.getCompiledRuleId(externalGrammar.repository.$self, helper, externalGrammar.repository);
 							}
 						} else {
-							// console.warn('CANNOT find grammar for scopeName: ' + pattern.include + ', I am: ', repository['$base'].name);
+							console.warn('CANNOT find grammar for scopeName: ' + pattern.include + ', I am: ', repository['$base'].name);
 						}
 
 					}
@@ -756,7 +756,7 @@ export class RuleFactory {
 					}
 
 					if (skipRule) {
-						// console.log('REMOVING RULE ENTIRELY DUE TO EMPTY PATTERNS THAT ARE MISSING');
+						console.log('REMOVING RULE ENTIRELY DUE TO EMPTY PATTERNS THAT ARE MISSING');
 						continue;
 					}
 
